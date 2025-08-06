@@ -1,0 +1,25 @@
+    font-size: 16px;
+    border-radius: 5px;
+    user-select: none;
+}
+button:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}
+/* Efek flash saat lompat */
+.flash {
+    animation: flash-bg 0.2s;
+}
+@keyframes flash-bg {
+    0% {background: linear-gradient(to bottom, #001F3F, #000);}
+    50% {background: linear-gradient(to bottom, #007BFF, #000);}
+    100% {background: linear-gradient(to bottom, #001F3F, #000);}
+}
+/* Animasi gajah saat bergerak */
+@keyframes move {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-5px);}
+    100% {transform: translateY(0);}
+}
+.move {
+    animation: move 0.1s ease-in-out;
+}
