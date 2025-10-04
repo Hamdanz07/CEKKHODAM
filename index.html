@@ -3,152 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CharmCraft — Santun, Pede, & Tulus</title>
-  <meta name="description" content="Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan.">
-  <link rel="stylesheet" href="css/style.css" />
+  <title>CEKKHODAM — Cek & Inspirasi</title>
+  <meta name="description" content="CEKKHODAM — alat ringan untuk cek khodam, pujian random, icebreaker, ide kencan, dan rencana hari ini.">
+  <!-- Playfair Display untuk serif klasik elegan -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main class="wrap" role="main">
-    <header>
-      <div class="logo">CC</div>
-      <div>
-        <h1>CharmCraft — Santun, Pede, &amp; Tulus</h1>
-        <p class="lead">
-          Kenalan dengan tulus, bukan modus. Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan.
-        </p>
+  <div id="stars"></div>
+
+  <main class="wrap" role="main" aria-labelledby="site-title">
+    <header class="header">
+      <div class="brand">
+        <h1 id="site-title">CEKKHODAM</h1>
+        <p class="tag">Santun — Mewah — Mistis</p>
       </div>
+      <div class="logo">✦</div>
     </header>
 
-    <nav role="tablist" aria-label="Fitur CharmCraft">
-      <button class="tab active" data-tab="praise">Pujian</button>
-      <button class="tab" data-tab="ice">Icebreaker</button>
-      <button class="tab" data-tab="ideas">Ide Kencan</button>
-      <button class="tab" data-tab="plan">Rencana</button>
+    <nav class="controls" role="navigation" aria-label="Fitur utama">
+      <button class="action" id="btn-khodam" title="Cek Khodam">🔮 Cek Khodam</button>
+      <button class="action" id="btn-praise" title="Pujian Random">💬 Pujian Random</button>
+      <button class="action" id="btn-ice" title="Icebreaker">❄️ Icebreaker</button>
+      <button class="action" id="btn-idea" title="Ide Kencan">💡 Ide Kencan</button>
+      <button class="action" id="btn-plan" title="Rencana Hari Ini">📅 Rencana Hari Ini</button>
     </nav>
 
-    <section>
-      <!-- Panel PUJIAN -->
-      <div id="praise" class="panel">
-        <div class="grid">
-          <div class="card">
-            <label>Nama (opsional)</label>
-            <input id="p-name" type="text" placeholder="contoh: Siti" />
-            <label>Gaya</label>
-            <select id="p-style">
-              <option value="light">Ringan & hangat</option>
-              <option value="personal">Tulus & personal</option>
-              <option value="funny">Sedikit humor</option>
-            </select>
-            <div class="btn-group">
-              <button id="makePraise" class="btn">Buat Pujian</button>
-            </div>
-            <div class="output" id="p-output" aria-live="polite"></div>
-          </div>
-
-          <div class="card">
-            <h3 class="small">Panduan singkat</h3>
-            <p class="small">
-              Gunakan pujian singkat, spesifik, dan tulus. Hindari komentar fisik yang sensitif.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel ICEBREAKER -->
-      <div id="ice" class="panel" hidden>
-        <div class="grid">
-          <div class="card">
-            <label>Situasi</label>
-            <select id="ice-situation">
-              <option>Chat online</option>
-              <option>Ketemu langsung</option>
-              <option>DM Instagram</option>
-              <option>Satu kelas/kantor</option>
-            </select>
-
-            <label>Suasana</label>
-            <select id="ice-mood">
-              <option>Santai</option>
-              <option>Ceria</option>
-              <option>Dewasa & sopan</option>
-            </select>
-
-            <div class="btn-group">
-              <button id="makeIce" class="btn">Buat Icebreaker</button>
-            </div>
-            <div class="output" id="ice-output"></div>
-          </div>
-
-          <div class="card">
-            <h3 class="small">Tips</h3>
-            <p class="small">
-              Mulai dari observasi (hobi, musik, film). Bukan klaim berlebihan atau pertanyaan pribadi.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel IDE KENCAN -->
-      <div id="ideas" class="panel" hidden>
-        <div class="grid">
-          <div class="card">
-            <label>Anggaran</label>
-            <select id="idea-budget">
-              <option value="cheap">Hemat</option>
-              <option value="mid">Sedang</option>
-              <option value="free">Bebas</option>
-            </select>
-
-            <label>Mode</label>
-            <select id="idea-mode">
-              <option value="active">Aktif</option>
-              <option value="calm">Tenang</option>
-              <option value="creative">Kreatif</option>
-              <option value="food">Kuliner</option>
-            </select>
-
-            <div class="btn-group">
-              <button id="makeIdea" class="btn">Cari Ide</button>
-            </div>
-            <div class="output" id="idea-output"></div>
-          </div>
-
-          <div class="card">
-            <h3 class="small">Contoh</h3>
-            <p class="small">Piknik sederhana, kelas memasak, jalan seni, atau ngopi di bookshop.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel RENCANA -->
-      <div id="plan" class="panel" hidden>
-        <div class="grid">
-          <div class="card">
-            <label>Hari/Tanggal</label>
-            <input id="plan-date" type="text" placeholder="Sabtu, 8 Nov" />
-            <label>Tempat</label>
-            <input id="plan-place" type="text" placeholder="Taman kota / Kafe X" />
-            <label>Catatan singkat</label>
-            <textarea id="plan-note" rows="3" placeholder="Rencanakan datang 10 menit lebih awal..."></textarea>
-            <div class="btn-group">
-              <button id="makePlan" class="btn">Buat Draft</button>
-            </div>
-            <div class="output" id="plan-output"></div>
-          </div>
-
-          <div class="card">
-            <h3 class="small">Aturan Aman</h3>
-            <p class="small">Konfirmasi waktu & biaya, jangan paksakan orang lain, sediakan opsi pulang aman.</p>
-          </div>
+    <section class="result" aria-live="polite" id="result">
+      <div class="result-inner">
+        <div id="result-stage" class="stage">
+          <p class="hint">Klik tombol di atas untuk memulai.</p>
         </div>
       </div>
     </section>
 
-    <footer>
-      © 2025 CharmCraft. Ingat: selalu hormati batasan & pilihan orang lain.
+    <footer class="footer">
+      <small>© 2025 CEKKHODAM — Hormati kepercayaan & batasan orang lain.</small>
     </footer>
   </main>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
