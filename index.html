@@ -4,33 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CharmCraft — Santun, Pede, & Tulus</title>
-  <meta name="description" content="Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan." />
-  <style>
-    :root{
-      --midnight:#0b2545; /* midnight blue */
-      --gold:#d4af37;
-      --muted:#edf2f7;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue';background:linear-gradient(180deg,var(--midnight) 0%, #072034 100%);color:var(--muted);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
-    .wrap{width:100%;max-width:980px;background:rgba(255,255,255,0.03);border-radius:14px;padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
-    header{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--gold), #ffd773);display:flex;align-items:center;justify-content:center;color:var(--midnight);font-weight:700;font-size:20px}
-    h1{margin:0;font-size:20px}
-    p.lead{margin:6px 0 18px;color:#dbe9ff}
-    nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-    .tab{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
-    .tab.active{background:var(--gold);color:var(--midnight);border-color:transparent}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    label{display:block;font-size:13px;color:#cfe6ff;margin-bottom:6px}
-    input[type=text],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)}
-    button.btn{background:var(--gold);color:var(--midnight);padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
-    .output{margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);min-height:46px}
-    footer{margin-top:18px;text-align:center;color:#bcd7ff;font-size:13px}
-    @media(max-width:760px){.grid{grid-template-columns:1fr}}
-    .small{font-size:13px;color:#c7deff}
-  </style>
+  <meta name="description" content="Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan.">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="wrap" role="main">
@@ -38,7 +13,9 @@
       <div class="logo">CC</div>
       <div>
         <h1>CharmCraft — Santun, Pede, &amp; Tulus</h1>
-        <p class="lead">Kenalan dengan tulus, bukan modus. Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan.</p>
+        <p class="lead">
+          Kenalan dengan tulus, bukan modus. Alat kecil untuk bantu kamu memulai obrolan, memberi pujian sopan, dan merancang kencan yang berkesan.
+        </p>
       </div>
     </header>
 
@@ -50,6 +27,7 @@
     </nav>
 
     <section>
+      <!-- Panel PUJIAN -->
       <div id="praise" class="panel">
         <div class="grid">
           <div class="card">
@@ -61,17 +39,22 @@
               <option value="personal">Tulus & personal</option>
               <option value="funny">Sedikit humor</option>
             </select>
-            <div style="margin-top:12px"><button id="makePraise" class="btn">Buat Pujian</button></div>
+            <div class="btn-group">
+              <button id="makePraise" class="btn">Buat Pujian</button>
+            </div>
             <div class="output" id="p-output" aria-live="polite"></div>
           </div>
 
           <div class="card">
             <h3 class="small">Panduan singkat</h3>
-            <p class="small">Gunakan pujian singkat, spesifik, dan tulus. Hindari komentar bersifat fisik yang sensitif. Selalu hormati batasan orang lain.</p>
+            <p class="small">
+              Gunakan pujian singkat, spesifik, dan tulus. Hindari komentar fisik yang sensitif.
+            </p>
           </div>
         </div>
       </div>
 
+      <!-- Panel ICEBREAKER -->
       <div id="ice" class="panel" hidden>
         <div class="grid">
           <div class="card">
@@ -82,23 +65,30 @@
               <option>DM Instagram</option>
               <option>Satu kelas/kantor</option>
             </select>
+
             <label>Suasana</label>
             <select id="ice-mood">
               <option>Santai</option>
               <option>Ceria</option>
               <option>Dewasa & sopan</option>
             </select>
-            <div style="margin-top:12px"><button id="makeIce" class="btn">Buat Icebreaker</button></div>
+
+            <div class="btn-group">
+              <button id="makeIce" class="btn">Buat Icebreaker</button>
+            </div>
             <div class="output" id="ice-output"></div>
           </div>
 
           <div class="card">
             <h3 class="small">Tips</h3>
-            <p class="small">Mulai dari observasi (hobi, musik, film). Bukan klaim berlebihan atau pertanyaan pribadi yang sensitif.</p>
+            <p class="small">
+              Mulai dari observasi (hobi, musik, film). Bukan klaim berlebihan atau pertanyaan pribadi.
+            </p>
           </div>
         </div>
       </div>
 
+      <!-- Panel IDE KENCAN -->
       <div id="ideas" class="panel" hidden>
         <div class="grid">
           <div class="card">
@@ -108,6 +98,7 @@
               <option value="mid">Sedang</option>
               <option value="free">Bebas</option>
             </select>
+
             <label>Mode</label>
             <select id="idea-mode">
               <option value="active">Aktif</option>
@@ -115,17 +106,21 @@
               <option value="creative">Kreatif</option>
               <option value="food">Kuliner</option>
             </select>
-            <div style="margin-top:12px"><button id="makeIdea" class="btn">Cari Ide</button></div>
+
+            <div class="btn-group">
+              <button id="makeIdea" class="btn">Cari Ide</button>
+            </div>
             <div class="output" id="idea-output"></div>
           </div>
 
           <div class="card">
             <h3 class="small">Contoh</h3>
-            <p class="small">Piknik sederhana, kelas memasak, jalan seni, atau kopi + bookshop hunting.</p>
+            <p class="small">Piknik sederhana, kelas memasak, jalan seni, atau ngopi di bookshop.</p>
           </div>
         </div>
       </div>
 
+      <!-- Panel RENCANA -->
       <div id="plan" class="panel" hidden>
         <div class="grid">
           <div class="card">
@@ -135,91 +130,25 @@
             <input id="plan-place" type="text" placeholder="Taman kota / Kafe X" />
             <label>Catatan singkat</label>
             <textarea id="plan-note" rows="3" placeholder="Rencanakan datang 10 menit lebih awal..."></textarea>
-            <div style="margin-top:12px"><button id="makePlan" class="btn">Buat Draft</button></div>
+            <div class="btn-group">
+              <button id="makePlan" class="btn">Buat Draft</button>
+            </div>
             <div class="output" id="plan-output"></div>
           </div>
 
           <div class="card">
-            <h3 class="small">Aturan aman</h3>
+            <h3 class="small">Aturan Aman</h3>
             <p class="small">Konfirmasi waktu & biaya, jangan paksakan orang lain, sediakan opsi pulang aman.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>© 2025 CharmCraft. Ingat: selalu hormati batasan & pilihan orang lain.</footer>
+    <footer>
+      © 2025 CharmCraft. Ingat: selalu hormati batasan & pilihan orang lain.
+    </footer>
   </main>
 
-  <script>
-    // simple tab handling
-    document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click', e=>{
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      const tab = e.currentTarget.dataset.tab;
-      document.querySelectorAll('.panel').forEach(p=>p.hidden=true);
-      document.getElementById(tab).hidden = false;
-    }));
-
-    // small content DB
-    const praises = {
-      light: [
-        name=>`Kamu punya selera yang bagus — aku suka caramu memilih hal-hal kecil.`,
-        name=>`Wajahmu cerah hari ini, bikin suasana jadi enak.`
-      ],
-      personal: [
-        name=>`${name ? name+',' : ''} aku kagum sama cara kamu menjelaskan ide tadi — jelas dan hangat.`,
-        name=>`${name ? name+',' : ''} ketulusanmu kelihatan dari perhatian kecil yang kamu tunjukkan.`
-      ],
-      funny: [
-        name=>`Kamu lucu banget — otak dan selera humormu cocok nih.`,
-        name=>`Kalau ada lomba senyum, kamu juaranya.`
-      ]
-    };
-
-    function choose(arr){return arr[Math.floor(Math.random()*arr.length)];}
-
-    document.getElementById('makePraise').addEventListener('click', ()=>{
-      const name = document.getElementById('p-name').value.trim();
-      const style = document.getElementById('p-style').value;
-      const generator = choose(praises[style]);
-      document.getElementById('p-output').textContent = generator(name) || '—';
-    });
-
-    const iceTemplates = [
-      s=>`Kalau kamu suka ${s}, aku juga. Punya rekomendasi?`,
-      s=>`Ngomong-ngomong, aku lihat kamu suka ${s}. Apa film/lagu favoritmu?`,
-      s=>`Kira-kira kalau ada event ${s}, kamu bakalan datang nggak?`
-    ];
-    document.getElementById('makeIce').addEventListener('click', ()=>{
-      const sit = document.getElementById('ice-situation').value;
-      const mood = document.getElementById('ice-mood').value;
-      const base = `${sit.toLowerCase()} ${mood.toLowerCase()}`;
-      document.getElementById('ice-output').textContent = choose(iceTemplates)(base);
-    });
-
-    const ideas = {
-      cheap:{active:["Jalan pagi + sarapan di warung lokal","Berburu mural di kota"],calm:["Baca buku di taman","Nonton film klasik di rumah"]},
-      mid:{active:["Kayak di danau","Sepeda santai + piknik"],food:["Tur kuliner kaki lima","Kelas membuat makanan lokal"]},
-      free:{creative:["Workshop kerajinan singkat","Kunjungi pameran seni lokal"],food:["Coba resep baru bareng di rumah"]}
-    };
-    document.getElementById('makeIdea').addEventListener('click', ()=>{
-      const b = document.getElementById('idea-budget').value;
-      const m = document.getElementById('idea-mode').value;
-      const pick = ideas[b] && ideas[b][m] ? choose(ideas[b][m]) : 'Coba jalan kaki santai + kopi.';
-      document.getElementById('idea-output').textContent = pick;
-    });
-
-    document.getElementById('makePlan').addEventListener('click', ()=>{
-      const date = document.getElementById('plan-date').value || 'Tanggal: -';
-      const place = document.getElementById('plan-place').value || 'Tempat: -';
-      const note = document.getElementById('plan-note').value || '';
-      const draft = `Rencana singkat:\n${date}\n${place}\nCatatan: ${note}`;
-      document.getElementById('plan-output').textContent = draft;
-    });
-
-    // accessibility: focus first input
-    document.getElementById('p-name').focus();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
-
